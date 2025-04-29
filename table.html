@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chronic Disease Risk Prediction</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-heading">Chronic Disease Risk Prediction</h1>
+
+        <div class="table-container">
+            <table class="custom-table">
+                <thead class="custom-thead">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>Sex</th>
+                        <th>HighChol</th>
+                        <th>CholCheck</th>
+                        <th>BMI</th>
+                        <th>Smoker</th>
+                        <th>HeartDiseaseorAttack</th>
+                        <th>PhysActivity</th>
+                        <th>Fruits</th>
+                        <th>Veggies</th>
+                        <th>HvyAlcoholConsump</th>
+                        <th>GenHlth</th>
+                        <th>MentHlth</th>
+                        <th>PhysHlth</th>
+                        <th>DiffWalk</th>
+                        <th>Stroke</th>
+                        <th>HighBP</th>
+                        <th>Diabetes</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                        <th>Predict</th>
+                    </tr>
+                </thead>
+                <tbody class="custom-tbody">
+                    {% for i in data %}
+                    <tr class="custom-row">
+                        <td>{{i[0]}}</td>
+                        <td>{{i[1]}}</td>
+                        <td>{{i[2]}}</td>
+                        <td>{{i[3]}}</td>
+                        <td>{{i[4]}}</td>
+                        <td>{{i[5]}}</td>
+                        <td>{{i[6]}}</td>
+                        <td>{{i[7]}}</td>
+                        <td>{{i[8]}}</td>
+                        <td>{{i[9]}}</td>
+                        <td>{{i[10]}}</td>
+                        <td>{{i[11]}}</td>
+                        <td>{{i[12]}}</td>
+                        <td>{{i[13]}}</td>
+                        <td>{{i[14]}}</td>
+                        <td>{{i[15]}}</td>
+                        <td>{{i[16]}}</td>
+                        <td>{{i[17]}}</td>
+                        <td>{{i[18]}}</td>
+                        <td>{{i[19]}}</td>
+                        <td><a href="{{url_for('edit', Id=i[0])}}" class="btn btn-edit">Edit</a></td>
+                        <td><a href="{{url_for('delete', Id=i[0])}}" class="btn btn-delete">Delete</a></td>
+                        <td><a href="{{url_for('predict')}}" class="btn btn-predict">Predict</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-link">
+            <a href="{{url_for('create')}}" class="btn btn-create">Go To Form</a>
+        </div>
+    </div>
+</body>
+</html>

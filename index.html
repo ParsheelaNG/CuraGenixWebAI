@@ -1,0 +1,171 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="/static/css/style.css">
+    </head>
+    <body>
+        <div class="nav-container">
+            <div class="nav-row">
+                <div class="nav-col1">
+                    <h2>Chronic Disease Risk Prediction</h2>
+                </div>
+                <div class="nav-col2">
+                    <ul>
+                        <li><a class="active" >Home</a></li>
+                        <li><a href="{{url_for('profile')}}">My Profile</a></li>
+                        <li><a href="{{url_for('login')}}">Login</a></li>
+                        <li><a href="{{url_for('create')}}">Create and Predict</a></li>
+                        <li><a href="{{url_for('logout')}}">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="body">
+            <h2>Chronic Disease Risk Prediction</h2>
+            <div class="container">
+                <form method="post" action="{{ url_for('predict') }}">
+            <div class="field">
+                <label for="Name">Name</label>
+                <input type="text" name="Name" placeholder="Enter your Name:" required><br>
+            </div>
+            <div class="field">
+                <label for="Age">Age</label>
+            <input type="number" name="Age" placeholder="Enter your age:" required><br>
+            </div>
+            <div class="field">
+                <label for="Sex">Sex</label>
+                <select name="Sex" required>
+                    <option value="">Select</option>
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="HighChol">HighChol</label>
+                <select name="HighChol" required>
+                    <option value="">Select</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="CholCheck">CholCheck</label>
+                <select name="CholCheck" required>
+                    <option value="">Select</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="BMI">BMI</label>
+                <input type="number" name="BMI" placeholder="Enter your BMI:" required>
+            </div>
+            <div class="field">
+                <label for="Smoker">Smoker</label>
+                <select name="Smoker" required>
+                    <option value="">Select</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="HeartDiseaseorAttack">HeartDiseaseorAttack</label>
+                <select name="HeartDiseaseorAttack" required>
+                    <option value="">Select</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="PhysActivity">PhysActivity</label>
+                <select name="PhysActivity" required>
+                    <option value="">Select</option>
+                    <option value="1">Active</option>
+                    <option value="0">Inactive</option>
+                </select>
+            </div>
+            <div class="field">
+                <label for="Fruits">Fruits</label>
+                <select name="Fruits" required>
+                    <option value="">Select</option>
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+        <div class="field">
+            <label for="Veggies">Veggies</label>
+            <select name="Veggies" required>
+                <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="HvyAlcoholConsump">HvyAlcoholConsump</label>
+            <select name="HvyAlcoholConsump" required>
+                <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="GenHlth">GenHlth</label>
+            <input type="number" name="GenHlth" min="1" max="5" placeholder="General Health (1-5 scale):" required>
+        </div>
+        <div class="field">
+            <label for="MentHlth">MentHlth</label>
+            <input type="number" name="MentHlth" min="0" max="30" placeholder="Mental Health Days (0-30 scale): " required><br>
+        </div>
+        <div class="field">
+            <label for="PhysHlth">PhysHlth</label>
+            <input type="number" name="PhysHlth"  min="0" max="30"  placeholder="Physical Health Days (0-30 scale):" required><br>
+        </div>
+        <div class="field">
+            <label for="DiffWalk">DiffWalk</label>
+            <select name="DiffWalk"  required>
+                <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <!-- <div class="field">
+            <label for="Stroke">Stroke</label>
+            <select name="Stroke"  required>
+                <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="HighBP">HighBP</label>
+            <select name="HighBP"  required>
+                <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="Diabetes">Diabetes</label>
+            <select name="Diabetes"  required>
+                <option value="">Select</option>
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+            </select>
+        </div> -->
+        
+        <div class="submit">
+            <button>Predict</button>
+        </div>
+        </form>
+        <form action="{{ url_for('display') }}">
+            <div class="submit">
+                <button type="submit">View Data</button>
+            </div>
+        </form>
+            </div>
+        </div>
+    </body>
+    </html>

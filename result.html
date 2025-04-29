@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Chart.js for graphs -->
+</head>
+<body>
+    <div class="nav-container">
+        <div class="nav-row">
+            <div class="nav-col1">
+                <h2>Chronic Disease Risk Prediction</h2>
+            </div>
+            <div class="nav-col2">
+                <ul>
+                    <li><a class="active">Home</a></li>
+                    <li><a href="{{ url_for('profile') }}">My Profile</a></li>
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('create') }}">Create and Predict</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="res-container">
+        <div class="res-col1">
+            <h2>Chronic Disease Risk Prediction Results</h2>
+        </div>
+
+        <!-- Chart visualization -->
+        <div class="res-col2">
+            <h3>Prediction Chart</h3>
+            <canvas id="predictionChart" width="400" height="400"></canvas>
+
+            <script>
+                // Parse the JSON string passed from Flask
+                const prediction = JSON.parse('{{ prediction | tojson }}');
+
+                // Extract the labels (disease names) and data (risk levels)
+                const labels = Object.keys(prediction);
+                const data = Object.values(prediction).map(risk => risk === "High Risk" ? 100 : 0); // Assuming 100 for "High Risk" and 0 for "Low Risk"
+
+                const ctx = document.getElementById('predictionChart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Risk (%)',
+                            data: data,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.6)',
+                                'rgba(54, 162, 235, 0.6)',
+                                'rgba(255, 206, 86, 0.6)',
+                                'rgba(75, 192, 192, 0.6)',
+                                'rgba(153, 102, 255, 0.6)',
+                                'rgba(255, 159, 64, 0.6)'
+                            ],
+                            borderColor: 'rgba(0, 0, 0, 0.7)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100
+                            }
+                        }
+                    }
+                });
+            </script>
+
+            <!-- Textual prediction also shown -->
+            <h3>Prediction Details</h3>
+            {% for disease, risk in prediction.items() %}
+                <p>{{ disease }}: {{ risk }}</p>
+            {% endfor %}
+        </div>
+
+        <!-- Back and Download buttons -->
+        <div class="res-col3">
+            <br>
+            <a href="{{ url_for('home') }}">Back to Home</a>
+            <br><br>
+            <a href="{{ download_url }}" class="btn-download">Download Report</a>
+        </div>
+    </div>
+</body>
+</html>

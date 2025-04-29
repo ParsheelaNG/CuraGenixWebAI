@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Table</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="nav-container">
+        <div class="nav-row">
+            <div class="nav-col1">
+                <h2>Chronic Disease Risk Prediction</h2>
+            </div>
+            <div class="nav-col2">
+                <ul>
+                    <li><a class="active" >Home</a></li>
+                    <li><a href="{{url_for('profile')}}">My Profile</a></li>
+                    <li><a href="{{url_for('login')}}">Login</a></li>
+                    <li><a href="{{url_for('create')}}">Create and Predict</a></li>
+                    <li><a href="{{url_for('logout')}}">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="body">
+        <h2>Edit Table</h2>
+        <div class="container">
+            <form method="post">
+
+                <div class="field">
+                    <label for="Age">Age:</label>
+                    <input type="number" value="{{ data[2] }}" name="Age" id="Age" placeholder="Enter your age:" required>
+                </div>
+
+                <div class="field">
+                    <label for="Sex">Sex:</label>
+                    <input type="number" value="{{ data[3] }}" name="Sex" id="Sex" placeholder="Sex (1 for Male, 0 for Female):" required>
+                </div>
+
+                <div class="field">
+                    <label for="HighChol">High Cholesterol:</label>
+                    <input type="number" value="{{ data[3] }}" name="HighChol" id="HighChol" placeholder="High Cholesterol (1 for Yes, 0 for No):" required>
+                </div>
+
+                <div class="field">
+                    <label for="CholCheck">Cholesterol Check:</label>
+                    <input type="number" value="{{ data[4] }}" name="CholCheck" id="CholCheck" placeholder="Cholesterol Check (1 for Yes, 0 for No):" required>
+                </div>
+
+                <div class="field">
+                    <label for="BMI">BMI:</label>
+                    <input type="number" value="{{ data[5] }}" name="BMI" id="BMI" placeholder="Enter your BMI:" required>
+                </div>
+
+                <div class="field">
+                    <label for="Smoker">Smoker:</label>
+                    <input type="number" value="{{ data[6] }}" name="Smoker" id="Smoker" placeholder="Smoker (1 for Yes, 0 for No):" required>
+                </div>
+
+                <div class="field">
+                    <label for="HeartDiseaseorAttack">Heart Disease or Attack:</label>
+                    <input type="number" value="{{data[7] }}" name="HeartDiseaseorAttack" id="HeartDiseaseorAttack" placeholder="Heart Disease or Attack (1 for Yes, 0 for No):" required>
+                </div>
+
+                <div class="field">
+                    <label for="PhysActivity">Physical Activity:</label>
+                    <input type="number" value="{{ data[8] }}" name="PhysActivity" id="PhysActivity" placeholder="Physical Activity (1 for Active, 0 for Inactive):" required>
+                </div>
+
+                <div class="field">
+                    <label for="Fruits">Fruits:</label>
+                    <input type="number" value="{{ data[9] }}" name="Fruits" id="Fruits" placeholder="Fruits (1 for Yes, 0 for No):" required>
+                </div>
+
+                <div class="field">
+                    <label for="Veggies">Vegetables:</label>
+                    <input type="number" value="{{ data[10] }}" name="Veggies" id="Veggies" placeholder="Vegetables (1 for Yes, 0 for No):" required>
+                </div>
+
+                <div class="field">
+                    <label for="HvyAlcoholConsump">Heavy Alcohol Consumption:</label>
+                    <input type="number" value="{{ data[11] }}" name="HvyAlcoholConsump" id="HvyAlcoholConsump" placeholder="Heavy Alcohol Consumption (1 for Yes, 0 for No):" required>
+                </div>
+
+                <div class="field">
+                    <label for="GenHlth">General Health:</label>
+                    <input type="number" value="{{ data[12] }}" name="GenHlth" id="GenHlth" placeholder="General Health (1-5 scale):" required>
+                </div>
+
+                <div class="field">
+                    <label for="MentHlth">Mental Health:</label>
+                    <input type="number" value="{{ data[13] }}" name="MentHlth" id="MentHlth" placeholder="Mental Health Days (0-30 scale): " required>
+                </div>
+
+                <div class="field">
+                    <label for="PhysHlth">Physical Health:</label>
+                    <input type="number" value="{{ data[14] }}" name="PhysHlth" id="PhysHlth" placeholder="Physical Health Days (0-30 scale):" required>
+                </div>
+
+                <div class="field">
+                    <label for="DiffWalk">Difficulty Walking:</label>
+                    <input type="number" value="{{ data[15] }}" name="DiffWalk" id="DiffWalk" placeholder="Difficulty Walking (1 for Yes, 0 for No):" required>
+                </div>
+
+                <div class="field">
+                    <label for="Stroke">Stroke:</label>
+                    <input type="number" value="{{ data[16] }}" name="Stroke" id="Stroke" placeholder="Stroke (1 for Yes, 0 for No):" required>
+                </div>
+
+                <div class="field">
+                    <label for="HighBP">High Blood Pressure:</label>
+                    <input type="number" value="{{ data[17] }}" name="HighBP" id="HighBP" placeholder="High Blood Pressure (1 for Yes, 0 for No): " required>
+                </div>
+
+                <div class="field">
+                    <label for="Diabetes">Diabetes:</label>
+                    <input type="number" value="{{ data[18] }}" name="Diabetes" id="Diabetes" placeholder="Diabetes (1 for Yes, 0 for No):" required>
+                </div>
+
+                <div class="submit">
+                    <button type="submit">Submit</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</body>
+</html>
